@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:24:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/24 16:47:15 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/10/26 17:02:42 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,19 @@
 #  define INT_MIN -2147483648
 # endif
 # include "../libft/libft.h"
-int	check_min_max(long n);
-int	check_alfa(char *num);
+
+typedef struct s_stack
+{
+	void	*head;
+	void	*base;
+	int		size;
+	t_list	*data;
+}	t_stack;
+
+//Data parser
+int		check_min_max(long n);
+int		check_alfa(char *num);
+//Stack funtions
+void	push(t_stack *stack, void *data);
+void	*pop(t_stack *stack);
 #endif

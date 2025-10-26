@@ -3,7 +3,8 @@ NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror -g
 
 SRC =	src/main.c\
-		src/parser.c
+		src/parser.c\
+		src/stack_functions_i.c
 
 OBJ = $(SRC:.c=.o)
 
