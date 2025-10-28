@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:24:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/28 14:43:31 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/10/28 18:00:40 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,12 @@ void	push(t_stack *stack, int n);
 int		pop(t_stack *stack);
 void	ft_lstdellast(t_list **lst, void (*del)(void *));
 void	stack_roll_up(t_stack *stk);
+void	stack_roll_down(t_stack *stk);
+int		stack_swap(t_stack *stk);
+void	*peek(t_stack *stk, unsigned int pos);
+int		sa(t_stack *a);
+int		sb(t_stack *b);
+int		ss(t_stack *a, t_stack *b);
+int		pa(t_stack *a, t_stack *b);
+int		pb(t_stack *a, t_stack *b);
 #endif
