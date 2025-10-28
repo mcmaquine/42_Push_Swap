@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:24:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/26 17:02:42 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/10/28 14:43:31 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_stack
 int		check_min_max(long n);
 int		check_alfa(char *num);
 //Stack funtions
-void	push(t_stack *stack, void *data);
-void	*pop(t_stack *stack);
+void	push(t_stack *stack, int n);
+int		pop(t_stack *stack);
+void	ft_lstdellast(t_list **lst, void (*del)(void *));
+void	stack_roll_up(t_stack *stk);
 #endif

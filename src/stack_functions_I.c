@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:30:49 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/26 20:24:23 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/10/28 14:11:43 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,67 @@ static void	delete(void	*data)
 		free(data);
 }
 
-void	push(t_stack *stack, void *data)
+static int	*create_int(int n)
 {
-	if (!stack || !data)
+	int	*p;
+
+	p = ft_calloc(1, sizeof(int));
+	*p = n;
+	return (p);
+}
+
+void	push(t_stack *stack, int n)
+{
+	int	*num;
+
+	num = create_int(n);
+	if (!stack)
 		return ;
-	ft_lstadd_back(&(stack->data), ft_lstnew(data));
+	ft_lstadd_back(&(stack->data), ft_lstnew(num));
 	stack->head = ft_lstlast(stack->data);
 	stack->size = ft_lstsize(stack->data);
 	if (stack->size == 1)
 		stack->base = ft_lstlast(stack->data); 
 }
 
-void	*pop(t_stack *stack)
+int	pop(t_stack *stack)
 {
 	t_list	*item;
-	void	*content;
+	int		content;
 
 	item = NULL;
+	content = 0;
 	if (!stack)
-		return (NULL);
+		return (0);
 	item = ft_lstlast(stack->data);
 	if (item)
-	{
-		content = ft_calloc(1, sizeof(int));
-		content = item->content;
-	}
-	ft_lstdelone(ft_lstlast(stack->data), delete);
+		content = *(int *)(item->content);
+	ft_lstdellast(&(stack->data), delete);
 	stack->size = ft_lstsize(stack->data);
 	stack->head = ft_lstlast(stack->data);
 	return (content);
+}
+
+/*
+Deletes last element from 
+*/
+void	ft_lstdellast(t_list **lst, void (*del)(void *))
+{
+	t_list	*last;
+	t_list	*iter;
+
+	iter = *lst;
+	last = ft_lstlast(*lst);
+	if (last != *lst)
+	{
+		while (iter->next != last)
+			iter = iter->next;
+		iter->next = NULL;
+		ft_lstdelone(last, del);
+	}
+	else
+	{
+		ft_lstdelone(*lst, del);
+		*lst = NULL;
+	}
 }

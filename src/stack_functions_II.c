@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   stack_functions_II.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/24 15:23:27 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/28 14:44:45 by mmaquine         ###   ########.fr       */
+/*   Created: 2025/10/28 14:13:58 by mmaquine          #+#    #+#             */
+/*   Updated: 2025/10/28 14:43:23 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	fill_stack(t_stack *stk)
+void	stack_roll_up(t_stack *stk)
 {
-	int	nums[3] = {1, 3, 6};
-	for (int i = 0; i < 3; i++)
-		push (stk, nums[i]);
-}
+	void	*last_content;
+	t_list	*last;
 
-int	main(void)
-{
-	t_stack	stack;
-
-	stack.data = NULL;
-	fill_stack(&stack);
-	stack_roll_up(&stack);
-	while (stack.size)
+	last_content = NULL;
+	if (!stk)
+		return ;
+	if (stk->size != 1)
 	{
-		ft_printf("%d ", pop(&stack));
+		last = ft_lstlast(stk->data);
+		last_content = last->content;
+		last->content = last->prev->content;
+		last = last->prev;
+		while (last->prev)
+		{
+			last->content = last->prev->content;
+			last = last->prev;
+		}
+		stk->data->content = last_content;
 	}
 }
