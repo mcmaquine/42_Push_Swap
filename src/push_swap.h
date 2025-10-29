@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:24:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/28 18:00:40 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/10/29 13:43:06 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@
 #  define INT_MIN -2147483648
 # endif
 # include "../libft/libft.h"
+# define SA	100
+# define SB	101
+# define SS 102
+# define PA 103
+# define PB 104
+# define RA 105
+# define RB 106
+# define RR 107
+# define RRA 108
+# define RRB 109
+# define RRR 110
 
 typedef struct s_stack
 {
@@ -38,10 +49,19 @@ void	ft_lstdellast(t_list **lst, void (*del)(void *));
 void	stack_roll_up(t_stack *stk);
 void	stack_roll_down(t_stack *stk);
 int		stack_swap(t_stack *stk);
-void	*peek(t_stack *stk, unsigned int pos);
+void	*peek(t_stack *stk, int pos);
 int		sa(t_stack *a);
 int		sb(t_stack *b);
 int		ss(t_stack *a, t_stack *b);
 int		pa(t_stack *a, t_stack *b);
 int		pb(t_stack *a, t_stack *b);
+int		ra(t_stack *a);
+int		rb(t_stack *b);
+int		rr(t_stack *a, t_stack *b);
+int		rra(t_stack *a);
+int		rrb(t_stack *b);
+//Solver functions
+void	solve(t_stack *a, t_stack *b, t_stack *com_list);
+//Utils
+int		*create_int(int n);
 #endif

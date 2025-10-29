@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 14:13:58 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/28 17:14:21 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/10/29 12:44:49 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,19 +84,32 @@ int	stack_swap(t_stack *stk)
 /*
 Look to a element in a stack without removing it, pos = 0 is the top, and pos 
 increases as the position int the stack goes towards to the base.
-If n stack.size the 
+If n < 0 returns base element.
 */
-void	*peek(t_stack *stk, unsigned int pos)
+void	*peek(t_stack *stk, int pos)
 {
 	t_list	*lst;
 
 	lst = ft_lstlast(stk->data);
-	if (pos >= (unsigned int)stk->size)
+	if (pos >= stk->size)
 		pos = stk->size - 1;
+	else if (pos < 0)
+		return (stk->data->content);
 	while (lst && pos)
 	{
 		lst = lst->prev;
 		pos--;
 	}
 	return (lst->content);
+}
+
+int	rrr(t_stack *a, t_stack *b)
+{
+	if ((a->size > 1) && (b->size > 1))
+	{
+		rra(a);
+		rrb(b);
+		return (RRR);
+	}
+	return (0);
 }

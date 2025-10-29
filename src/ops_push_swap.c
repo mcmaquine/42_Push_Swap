@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 17:40:16 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/28 17:54:24 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/10/29 14:27:14 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,21 @@
 
 int	sa(t_stack *a)
 {
-	return (stack_swap(a));
+	stack_swap(a);
+	return (SA);
 }
 
 int sb(t_stack *b)
 {
-	return (stack_swap(b));
+	stack_swap(b);
+	return (SB);
 }
 
 int ss(t_stack *a, t_stack *b)
 {
-	return (stack_swap(a) || stack_swap(b));
+	stack_swap(a);
+	stack_swap(b);
+	return (SS);
 }
 
 int pa(t_stack *a, t_stack *b)
@@ -38,7 +42,7 @@ int pa(t_stack *a, t_stack *b)
 		content = pop(b);
 		push(a, content);
 	}
-	return (1);
+	return (PA);
 }
 
 int	pb(t_stack *a, t_stack *b)
@@ -52,5 +56,5 @@ int	pb(t_stack *a, t_stack *b)
 		content = pop(a);
 		push(b, content);
 	}
-	return (1);
+	return (PB);
 }

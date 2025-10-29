@@ -5,7 +5,11 @@ CFLAGS = -Wall -Wextra -Werror -g
 SRC =	src/main.c\
 		src/parser.c\
 		src/stack_functions_I.c\
-		src/stack_functions_II.c
+		src/stack_functions_II.c\
+		src/solver.c\
+		src/ops_push_swap.c\
+		src/ops_push_swap_II.c\
+		src/push_swap_utils.c
 
 OBJ = $(SRC:.c=.o)
 

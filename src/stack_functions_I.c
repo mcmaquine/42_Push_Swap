@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_functions_i.c                                :+:      :+:    :+:   */
+/*   stack_functions_I.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:30:49 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/28 14:11:43 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/10/29 13:40:20 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,6 @@ static void	delete(void	*data)
 {
 	if (data)
 		free(data);
-}
-
-static int	*create_int(int n)
-{
-	int	*p;
-
-	p = ft_calloc(1, sizeof(int));
-	*p = n;
-	return (p);
 }
 
 void	push(t_stack *stack, int n)
