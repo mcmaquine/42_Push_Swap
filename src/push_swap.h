@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:24:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/29 13:43:06 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/10/29 22:55:23 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,3 +65,12 @@ void	solve(t_stack *a, t_stack *b, t_stack *com_list);
 //Utils
 int		*create_int(int n);
 #endif
+
+/*
+deb http://deb.debian.org/debian/ trixie main contrib non-free
+Incluir a lina acima no arquivo /etc/apt/sources.list
+fazer apt update
+
+add no /etc/environment como LD_LIBRARY_PATH
+/home/user/.local/share/Steam/steamcmd/linux32:/home/user/.local/share/Steam/steamcmd/linux64:/home/user/cs2ds/game/bin/linuxsteamrt64:/home/user/cs2ds/game/csgo/bin/linuxsteamrt64
+*/
