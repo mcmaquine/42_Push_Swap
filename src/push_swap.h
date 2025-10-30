@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:24:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/29 22:55:23 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/10/30 15:49:13 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int		rb(t_stack *b);
 int		rr(t_stack *a, t_stack *b);
 int		rra(t_stack *a);
 int		rrb(t_stack *b);
+// Lifo functions
+void	lifo_add(t_stack *l, int n);
 //Solver functions
 void	solve(t_stack *a, t_stack *b, t_stack *com_list);
 //Utils
@@ -71,6 +73,6 @@ deb http://deb.debian.org/debian/ trixie main contrib non-free
 Incluir a lina acima no arquivo /etc/apt/sources.list
 fazer apt update
 
-add no /etc/environment como LD_LIBRARY_PATH
-/home/user/.local/share/Steam/steamcmd/linux32:/home/user/.local/share/Steam/steamcmd/linux64:/home/user/cs2ds/game/bin/linuxsteamrt64:/home/user/cs2ds/game/csgo/bin/linuxsteamrt64
+add no /etc/environment 
+LD_LIBRARY_PATH="/home/user/.local/share/Steam/steamcmd/linux32:/home/user/.local/share/Steam/steamcmd/linux64:/home/user/cs2ds/game/bin/linuxsteamrt64:/home/user/cs2ds/game/csgo/bin/linuxsteamrt64"
 */

@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:23:27 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/29 16:43:26 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/10/30 16:21:49 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	fill_stack(t_stack *stk)
 {
-	int	nums[N] = {1,3, 2};
+	int	nums[N] = {2,3,1};
 	for (int i = 0; i < N; i++)
 		push (stk, nums[i]);
 }
@@ -79,11 +79,12 @@ int	main(int argc, char **argv)
 
 	(void)argc;
 	(void)argv;
-	commands.data = NULL;
-	commands.size = 0;
 	a.data = NULL;
+	b.data = NULL;
+	commands.data = NULL;
 	a.size = 0;
 	b.size = 0;
+	commands.size = 0;
 	fill_stack(&a);
 	print_stack(&a);
 	solve(&a, &b, &commands);

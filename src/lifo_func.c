@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   lifo_func.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/29 13:39:58 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/30 15:49:56 by mmaquine         ###   ########.fr       */
+/*   Created: 2025/10/30 10:41:49 by mmaquine          #+#    #+#             */
+/*   Updated: 2025/10/30 15:48:49 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*create_int(int n)
+void	lifo_add(t_stack *l, int n)
 {
-	int	*p;
+	int	*num;
 
-	p = ft_calloc(1, sizeof(int));
-	*p = n;
-	return (p);
+	num = create_int(n);
+	if (!l)
+		return ;
+	ft_lstadd_front(&(l->data), ft_lstnew(num));
+	l->head = ft_lstlast(l->data);
+	l->size = ft_lstsize(l->data);
+	l->base = l->data;
 }

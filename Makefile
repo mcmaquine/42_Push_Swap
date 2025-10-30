@@ -9,7 +9,8 @@ SRC =	src/main.c\
 		src/solver.c\
 		src/ops_push_swap.c\
 		src/ops_push_swap_II.c\
-		src/push_swap_utils.c
+		src/push_swap_utils.c\
+		src/lifo_func.c
 
 OBJ = $(SRC:.c=.o)
 

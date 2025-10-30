@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:59:50 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/29 16:48:30 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/10/30 16:13:47 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,28 @@ int	check_ordenation(t_stack *a)
 	return (1);
 }
 
-void	solve_small(t_stack *a, t_stack *com_list)
+void	solve_small(t_stack *a, t_stack *b, t_stack *com_list)
 {
 	int	*n1;
 	int	*n2;
+	int *n3;
 
-	while(!check_ordenation(a))
+	while(!check_ordenation(a) || (b->size > 0))
 	{
 		n1 = peek(a, 0);
+		n2 = peek(a, 1);
+		n3 = peek(a, -1);
+		if ((*n1 < *n2) && (*n1 < *n3)) 
+			lifo_add (com_list, pb(a ,b));
+  		n1 = peek(a, 0);
 		n2 = peek(a, -1);
 		if (*n1 > *n2)
-			push (com_list, ra(a));
-  		n1 = peek(a, 0);
+			lifo_add (com_list, ra(a));
+		n1 = peek(a, 0);
 		n2 = peek(a, 1);
 		if (*n1 > *n2)
-			push (com_list, sa(a));
-		n1 = peek(a, 1);
-		n2 = peek(a, 2);
-			push (com_list, rra(a));
+			lifo_add (com_list, sa(a));
+		lifo_add (com_list, pa(a, b));
 	}
 }
 
@@ -52,6 +56,6 @@ void	solve(t_stack *a, t_stack *b, t_stack *com_list)
 	(void)b;
 	if (a->size < 4)
 	{
-		solve_small(a, com_list);
+		solve_small(a, b, com_list);
 	}
 }
