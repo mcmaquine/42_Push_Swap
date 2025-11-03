@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:24:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/30 15:49:13 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/10/31 19:01:59 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	lifo_add(t_stack *l, int n);
 void	solve(t_stack *a, t_stack *b, t_stack *com_list);
 //Utils
 int		*create_int(int n);
+int		check_ordenation(t_stack *a);
+int		get_index(t_stack *stk, int n);
 #endif
 
 /*

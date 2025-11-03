@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 17:40:16 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/29 14:27:14 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/10/31 20:22:34 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ int pa(t_stack *a, t_stack *b)
 	}
 	return (PA);
 }
-
+/*
+Push element in a into b. Nothing happens if a is empty.
+*/
 int	pb(t_stack *a, t_stack *b)
 {
 	int	content;

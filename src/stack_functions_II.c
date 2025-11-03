@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 14:13:58 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/29 12:44:49 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/10/31 20:30:42 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	stack_roll_up(t_stack *stk)
 			last = last->prev;
 		}
 		stk->data->content = last_content;
+		stk->head = ft_lstlast(stk->data);
+		stk->base = stk->data;
 	}
 }
 
@@ -59,6 +61,8 @@ void	stack_roll_down(t_stack *stk)
 			last = last->next;
 		}
 		last->content = last_content;
+		stk->head = ft_lstlast(stk->data);
+		stk->base = stk->data;
 	}
 }
 
