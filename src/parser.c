@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 16:29:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/24 16:39:10 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/03 16:31:33 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,18 @@ int	check_alfa(char *num)
 		num++;
 	}
 	return (1);
+}
+
+/*
+Fill stack, if everything is ok return 1, otherwise return 0
+*/
+int	fill_stack(t_stack *a, int argc, char **argv)
+{
+	int	param;
+
+	param = 1;
+	while (param < argc)
+	{
+		
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 13:39:58 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/31 19:58:35 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/03 10:49:45 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ int	get_index(t_stack *stk, int n)
 	return (-1);
 }
 
+/*
+Return a pointer to a smallest int in a stack
+*/
 int	*get_smallest(t_stack *stk)
 {
 	int		*small;
@@ -68,7 +71,7 @@ int	*get_smallest(t_stack *stk)
 	small = list->content;
 	while(list)
 	{
-		if (*small < *(int *)list->content)
+		if (*small > *(int *)list->content)
 			small = list->content;
 		list = list->prev;
 	}

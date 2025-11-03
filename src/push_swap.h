@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:24:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/31 19:01:59 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/03 12:04:38 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ void	solve(t_stack *a, t_stack *b, t_stack *com_list);
 int		*create_int(int n);
 int		check_ordenation(t_stack *a);
 int		get_index(t_stack *stk, int n);
+int		*get_smallest(t_stack *stk);
+void	move_up(t_stack *stk, int n, t_stack *com_list);
+void	move_down(t_stack *stk, int n, t_stack *com_list);
 #endif
 
 /*
