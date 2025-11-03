@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:59:50 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/03 15:44:39 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/03 18:20:48 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,10 @@ void	solve_small(t_stack *a, t_stack *com_list)
 	}
 }
 
-void	move_down(t_stack *stk, int n, t_stack *com_list)
+void	move_up_down(t_stack *stk, int n, t_stack *comlst, int (*f)(t_stack *))
 {
 	while (*(int*)peek(stk, 0) != n)
-		lifo_add(com_list, rra(stk));
-}
-
-void	move_up(t_stack *stk, int n, t_stack *com_list)
-{
-	while (*(int*)peek(stk, 0) != n)
-		lifo_add(com_list, ra(stk));
+		lifo_add(comlst, f(stk));
 }
 
 void	solve_hundred(t_stack *a, t_stack *b, t_stack *com_list)
@@ -74,9 +68,9 @@ void	solve_hundred(t_stack *a, t_stack *b, t_stack *com_list)
 	{
 		small = get_smallest(a);
 		if (get_index(a, *small) > a->size / 2)
-			move_down(a, *small, com_list);
+			move_up_down(a, *small, com_list, rra);
 		else
-			move_up(a, *small, com_list);
+			move_up_down(a, *small, com_list, ra);
 		lifo_add(com_list, pb(a, b));
 	}
 	solve_for_three(a, com_list);
@@ -86,7 +80,7 @@ void	solve_hundred(t_stack *a, t_stack *b, t_stack *com_list)
 
 void	solve(t_stack *a, t_stack *b, t_stack *com_list)
 {
-	while (!check_ordenation(a))
+	while (!check_ordenation(a) || b->size > 0)
 	{
 		if (a->size < 2)
 			return ;

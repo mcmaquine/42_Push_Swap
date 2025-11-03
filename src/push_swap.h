@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:24:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/03 12:04:38 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/03 18:57:55 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ typedef struct s_stack
 }	t_stack;
 
 //Data parser
-int		check_min_max(long n);
+int		fill_stack(t_stack *a, int argc, char **argv);
+int		check_min_max(char *num);
 int		check_alfa(char *num);
 //Stack funtions
 void	push(t_stack *stack, int n);
@@ -69,8 +70,7 @@ int		*create_int(int n);
 int		check_ordenation(t_stack *a);
 int		get_index(t_stack *stk, int n);
 int		*get_smallest(t_stack *stk);
-void	move_up(t_stack *stk, int n, t_stack *com_list);
-void	move_down(t_stack *stk, int n, t_stack *com_list);
+void	move_up_down(t_stack *stk, int n, t_stack *comlst, int (*f)(t_stack *));
 #endif
 
 /*

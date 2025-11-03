@@ -6,20 +6,11 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:23:27 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/03 15:33:47 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/03 20:18:54 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-# define N 5
-
-void	fill_stack(t_stack *stk)
-{
-	int	nums[5] = {1, 5, 2, 4, 3};
-	for (int i = 0; i < N; i++)
-		push (stk, nums[i]);
-}
 
 void	print_stack(t_stack *stk)
 {
@@ -77,15 +68,17 @@ int	main(int argc, char **argv)
 	t_stack b;
 	t_stack	commands;
 
-	(void)argc;
-	(void)argv;
 	a.data = NULL;
 	b.data = NULL;
-	commands.data = NULL;
 	a.size = 0;
 	b.size = 0;
+	if (!fill_stack(&a, argc, argv) || argc < 2)
+	{
+		free_stack(&a);
+		return 0;
+	}
+	commands.data = NULL;
 	commands.size = 0;
-	fill_stack(&a);
 	print_stack(&a);
 	ft_printf("Ordered\n");
 	solve(&a, &b, &commands);
