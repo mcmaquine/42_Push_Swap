@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:24:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/03 18:57:55 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/04 13:27:43 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ int		*create_int(int n);
 int		check_ordenation(t_stack *a);
 int		get_index(t_stack *stk, int n);
 int		*get_smallest(t_stack *stk);
+int		*get_largest(t_stack *stk);
 void	move_up_down(t_stack *stk, int n, t_stack *comlst, int (*f)(t_stack *));
+//Sorting algorith for reference
+void	quick_sort(int *list, int idx_start, int idx_end);
 #endif
 
 /*

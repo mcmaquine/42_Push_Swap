@@ -10,7 +10,8 @@ SRC =	src/main.c\
 		src/ops_push_swap.c\
 		src/ops_push_swap_II.c\
 		src/push_swap_utils.c\
-		src/lifo_func.c
+		src/lifo_func.c\
+		src/sorting_util.c
 
 OBJ = $(SRC:.c=.o)
 

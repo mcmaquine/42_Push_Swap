@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 13:39:58 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/03 10:49:45 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/04 10:42:40 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,20 @@ int	*get_smallest(t_stack *stk)
 		list = list->prev;
 	}
 	return (small);
+}
+
+int	*get_largest(t_stack *stk)
+{
+	int		*large;
+	t_list	*list;
+
+	list = stk->head;
+	large = list->content;
+	while(list)
+	{
+		if (*large < *(int *)list->content)
+			large = list->content;
+		list = list->prev;
+	}
+	return (large);
 }

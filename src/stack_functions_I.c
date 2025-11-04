@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:30:49 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/10/30 15:50:08 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/04 11:05:11 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	push(t_stack *stack, int n)
 	ft_lstadd_back(&(stack->data), ft_lstnew(num));
 	stack->head = ft_lstlast(stack->data);
 	stack->size = ft_lstsize(stack->data);
+	stack->base = stack->data;
 	if (stack->size == 1)
 		stack->base = ft_lstlast(stack->data); 
 }

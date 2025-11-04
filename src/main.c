@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:23:27 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/03 21:27:38 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/04 17:32:04 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ void	print_stack(t_stack *stk)
 		ft_printf("%d\n", *(int *)peek(stk, size));
 		size++;
 	}
+}
+
+void	copy_stack_to_k(t_stack *a, int *k)
+{
+	int	i;
+
+	i = -1;
+	while (++i < a->size)
+		k[i] = *(int *)peek(a, i);
 }
 
 void 	free_stack(t_stack *stk)
@@ -67,20 +76,27 @@ int	main(int argc, char **argv)
 	t_stack a;
 	t_stack b;
 	t_stack	commands;
+	int		*k;
 
 	a.data = NULL;
 	b.data = NULL;
 	a.size = 0;
 	b.size = 0;
+	commands.data = NULL;
+	commands.size = 0;
 	if (!fill_stack(&a, argc, argv))
 	{
 		free_stack(&a);
 		return 0;
 	}
-	commands.data = NULL;
-	commands.size = 0;
 	//print_stack(&a);
+	k = ft_calloc(a.size, sizeof(int));
+	copy_stack_to_k(&a, k);
+	quick_sort(k, 0, a.size - 1);
 	solve(&a, &b, &commands);
 	print_commands(&commands);
+	for (int i = 0; i < a.size; i++)
+		ft_printf("%d\n", k[i]);
 	free_stack(&a);
+	free(k);
 }

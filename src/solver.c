@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:59:50 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/03 21:49:08 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/04 13:22:37 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ void	move_up_down(t_stack *stk, int n, t_stack *comlst, int (*f)(t_stack *))
 void	solve_hundred(t_stack *a, t_stack *b, t_stack *com_list)
 {
 	int	*small;
-	
+	int	key_nbr;
+
+	key_nbr = *(int *)peek( a, a->size / 4 - 1);
 	while (a->size > 3)
 	{
 		small = get_smallest(a);
@@ -78,6 +80,10 @@ void	solve_hundred(t_stack *a, t_stack *b, t_stack *com_list)
 		lifo_add(com_list, pa(a, b));
 }
 
+/*
+Start point for solving stack ordenation. This function checks stack size and
+choose correct option.
+*/
 void	solve(t_stack *a, t_stack *b, t_stack *com_list)
 {
 	while (!check_ordenation(a) || b->size > 0)
@@ -90,7 +96,7 @@ void	solve(t_stack *a, t_stack *b, t_stack *com_list)
 			solve_for_three(a, com_list);
 		else if (a->size > 3 && a->size <= 100)
 			solve_hundred(a, b, com_list);
-		// else
+		// else if
 			// solve_hundred_plus(a, b, com_list);
 	}
 }

@@ -6,11 +6,28 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 16:29:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/03 21:02:14 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/04 10:17:18 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*
+	Verify if a number already exists in stack stk. Return 1 it is exists, 0
+	otherwise.
+*/
+int	is_in_stack(t_stack *stk, int n)
+{
+	int	i;
+
+	i = -1;
+	while (++i < stk->size)
+	{
+		if (*(int *)peek(stk, i) == n)
+			return (1);
+	}
+	return (0);
+}
 
 /*
 Return 1 if the number is between INT_MIN and INT_MAX including
@@ -44,6 +61,23 @@ int	check_alfa(char *num)
 }
 
 /*
+Return 1 if num is a valide input and adds it to stack, return 0 if not valid
+and do not insert on stack.
+*/
+int	validate_input(t_stack *stk, char *num)
+{
+	long	n;
+
+	if (!check_alfa(num) || !check_min_max(num))
+		return (0);
+	n = ft_atoi(num);
+	if (is_in_stack(stk, (int)n))
+		return (0);
+	lifo_add(stk, (int)n);
+	return (1);
+}
+
+/*
 Fill stack, if everything is ok return 1, otherwise return 0
 */
 int	fill_stack(t_stack *a, int argc, char **argv)
@@ -62,12 +96,8 @@ int	fill_stack(t_stack *a, int argc, char **argv)
 		i = -1;
 		split = ft_split(argv[param], ' ');
 		while (split[++i])
-		{
-			if (check_min_max(split[i]) && check_alfa(split[i]))
-				lifo_add(a, (int)ft_atoi(split[i]));
-			else
+			if(!validate_input(a, split[i]))
 				ok = 0;
-		}
 		ft_free_split(split);
 		split = NULL;
 		param++;
