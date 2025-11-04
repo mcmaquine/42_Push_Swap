@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:23:27 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/03 20:18:54 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/03 21:27:38 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,15 @@ int	main(int argc, char **argv)
 	b.data = NULL;
 	a.size = 0;
 	b.size = 0;
-	if (!fill_stack(&a, argc, argv) || argc < 2)
+	if (!fill_stack(&a, argc, argv))
 	{
 		free_stack(&a);
 		return 0;
 	}
 	commands.data = NULL;
 	commands.size = 0;
-	print_stack(&a);
-	ft_printf("Ordered\n");
+	//print_stack(&a);
 	solve(&a, &b, &commands);
-	print_stack(&a);
 	print_commands(&commands);
 	free_stack(&a);
 }

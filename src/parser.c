@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 16:29:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/03 19:16:26 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/03 21:02:14 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,20 @@ int	fill_stack(t_stack *a, int argc, char **argv)
 	char	**split;
 
 	param = 1;
-	ok = 1;
+	ok = 0;
 	split = NULL;
 	while (param < argc)
 	{
+		ok = 1;
 		i = -1;
-		split = ft_split(argv[1], ' ');
+		split = ft_split(argv[param], ' ');
 		while (split[++i])
-			if (check_min_max(split[i]) && check_alfa(split[1]))
-				push(a, (int)ft_atoi(split[i]));
+		{
+			if (check_min_max(split[i]) && check_alfa(split[i]))
+				lifo_add(a, (int)ft_atoi(split[i]));
 			else
 				ok = 0;
+		}
 		ft_free_split(split);
 		split = NULL;
 		param++;
