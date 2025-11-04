@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:59:50 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/03 21:31:30 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/03 21:49:08 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,9 @@ void	solve(t_stack *a, t_stack *b, t_stack *com_list)
 			solve_small(a, com_list);
 		else if (a->size < 4)
 			solve_for_three(a, com_list);
-		if (a->size > 3)
+		else if (a->size > 3 && a->size <= 100)
 			solve_hundred(a, b, com_list);
+		// else
+			// solve_hundred_plus(a, b, com_list);
 	}
 }
