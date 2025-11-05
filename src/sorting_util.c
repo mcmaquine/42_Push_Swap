@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 11:34:32 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/04 17:42:43 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/05 13:38:54 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,5 @@ void	sort(int *list, int size)
 				swap( list + i, list + j);
 	}
 }
+
+void	apply_rank

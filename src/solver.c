@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:59:50 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/04 13:22:37 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/05 10:35:09 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	rotate_stack(t_stack *stk, int n, t_stack *comlst, int (*f)(t_stack *))
 		lifo_add(comlst, f(stk));
 }
 
-void	solve_hundred(t_stack *a, t_stack *b, t_stack *com_list)
+void	solve_tens(t_stack *a, t_stack *b, t_stack *com_list)
 {
 	int	*small;
 
@@ -95,7 +95,7 @@ void	push_chunks_to_b(t_stack *a, t_stack *b, t_stack *com_list, int *k)
 		index += step;
 		key_nbr = k[index - 1];
 		small = get_smallest(a);
-		while (*small <= key_nbr )
+		while (small && (*small <= key_nbr))
 		{
 			if (get_index(a, *small) > a->size / 2)
 				rotate_stack(a, *small, com_list, rra);
@@ -136,13 +136,12 @@ void	solve(t_stack *a, t_stack *b, t_stack *com_list, int *k)
 			solve_small(a, com_list);
 		else if (a->size < 4)
 			solve_for_three(a, com_list);
-		else if (a->size > 3 && a->size <= 100)
+		else if (a->size > 3 && a->size <= 10)
+			solve_tens(a, b, com_list);
+		else if (a->size > 10)
 		{
 			push_chunks_to_b(a, b, com_list, k);
 			push_chunks_to_a(a, b, com_list);
-			//solve_hundred(a, b, com_list);
 		}
-		// else if
-			// solve_hundred_plus(a, b, com_list);
 	}
 }

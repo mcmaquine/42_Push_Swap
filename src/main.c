@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:23:27 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/04 17:32:04 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/05 09:39:14 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,6 @@ int	main(int argc, char **argv)
 	sort(k, a.size);
 	solve(&a, &b, &commands, k);
 	print_commands(&commands);
-	for (int i = 0; i < a.size; i++)
-		ft_printf("%d\n", k[i]);
 	free_stack(&a);
 	free(k);
 }

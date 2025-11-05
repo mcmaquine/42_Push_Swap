@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:24:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/04 13:27:43 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/05 13:42:35 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,3 @@ void	rotate_stack(t_stack *stk, int n, t_stack *comlst, int (*f)(t_stack *));
 //Sorting algorith for reference
 void	sort(int *list, int size);
 #endif
-
-/*
-deb http://deb.debian.org/debian/ trixie main contrib non-free
-Incluir a lina acima no arquivo /etc/apt/sources.list
-fazer apt update
-
-add no /etc/environment 
-LD_LIBRARY_PATH="/home/user/.local/share/Steam/steamcmd/linux32:/home/user/.local/share/Steam/steamcmd/linux64:/home/user/cs2ds/game/bin/linuxsteamrt64:/home/user/cs2ds/game/csgo/bin/linuxsteamrt64"
-*/

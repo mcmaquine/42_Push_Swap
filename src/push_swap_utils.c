@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 13:39:58 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/04 10:42:40 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/05 13:36:24 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	*create_int(int n)
 	p = ft_calloc(1, sizeof(int));
 	*p = n;
 	return (p);
-}
+}i
 
 /*
 	Return 1 if stack *a is ordenated, 0 otherwise
@@ -68,6 +68,8 @@ int	*get_smallest(t_stack *stk)
 	t_list	*list;
 
 	list = stk->head;
+	if (!list)
+		return (NULL);
 	small = list->content;
 	while(list)
 	{
