@@ -21,30 +21,17 @@ static void	swap(int *a, int *b)
 	*b = temp;
 }
 
-void	quick_sort(int *list, int idx_start, int idx_end)
+void	sort(int *list, int size)
 {
-	int	pivot;
-	int	pos_pivot;
+	int	j;
 	int i;
-	int	temp;
 
-	if ((idx_end - idx_start) <= 0)
-		return ;
-	pos_pivot = (idx_end - idx_start)/2;
-	pivot = list[pos_pivot];
-	i = idx_start;
-	while (i <= idx_end)
+	i = -1;
+	while (++i < size)
 	{
-		if (list[i] > pivot && (i != pos_pivot))
-		{
-			temp = list[i];
-			list[i] = pivot;
-			list[pos_pivot] = temp;
-			pos_pivot = i;
-		}
-		i++;
+		j = i;
+		while (++j < size)
+			if (list[i] > list[j])
+				swap( list + i, list + j);
 	}
-	quick_sort(list, idx_start, idx_start + (idx_end - idx_start)/2);
- 	quick_sort(list, idx_start + (idx_end - idx_start)/2 + 1, idx_end);
-	return ;
 }

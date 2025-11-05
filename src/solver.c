@@ -54,7 +54,7 @@ void	solve_small(t_stack *a, t_stack *com_list)
 	}
 }
 
-void	move_up_down(t_stack *stk, int n, t_stack *comlst, int (*f)(t_stack *))
+void	rotate_stack(t_stack *stk, int n, t_stack *comlst, int (*f)(t_stack *))
 {
 	while (*(int*)peek(stk, 0) != n)
 		lifo_add(comlst, f(stk));
@@ -63,16 +63,14 @@ void	move_up_down(t_stack *stk, int n, t_stack *comlst, int (*f)(t_stack *))
 void	solve_hundred(t_stack *a, t_stack *b, t_stack *com_list)
 {
 	int	*small;
-	int	key_nbr;
 
-	key_nbr = *(int *)peek( a, a->size / 4 - 1);
 	while (a->size > 3)
 	{
 		small = get_smallest(a);
 		if (get_index(a, *small) > a->size / 2)
-			move_up_down(a, *small, com_list, rra);
+			rotate_stack(a, *small, com_list, rra);
 		else
-			move_up_down(a, *small, com_list, ra);
+			rotate_stack(a, *small, com_list, ra);
 		lifo_add(com_list, pb(a, b));
 	}
 	solve_for_three(a, com_list);
@@ -80,11 +78,55 @@ void	solve_hundred(t_stack *a, t_stack *b, t_stack *com_list)
 		lifo_add(com_list, pa(a, b));
 }
 
+void	push_chunks_to_b(t_stack *a, t_stack *b, t_stack *com_list, int *k)
+{
+	int	step;
+	int	key_nbr;
+	int	index;
+	int	*small;
+
+	if (a->size > 100)
+		step = a->size / 8;
+	else
+		step = a->size / 4;
+	index = 0;
+	while (a->size > 0)
+	{
+		index += step;
+		key_nbr = k[index - 1];
+		small = get_smallest(a);
+		while (*small <= key_nbr )
+		{
+			if (get_index(a, *small) > a->size / 2)
+				rotate_stack(a, *small, com_list, rra);
+			else
+				rotate_stack(a, *small, com_list, ra);
+			lifo_add(com_list, pb(a, b));
+			small = get_smallest(a);
+		}
+	}
+}
+
+void	push_chunks_to_a(t_stack *a, t_stack *b, t_stack *com_list)
+{
+	int	*big;
+
+	while (b->size > 0)
+	{
+		big = get_largest(b);
+		if (get_index(b, *big) > b->size / 2)
+			rotate_stack(b, *big, com_list, rrb);
+		else
+			rotate_stack(b, *big, com_list, rb);
+		lifo_add(com_list, pa(a, b));
+	}
+}
+
 /*
 Start point for solving stack ordenation. This function checks stack size and
 choose correct option.
 */
-void	solve(t_stack *a, t_stack *b, t_stack *com_list)
+void	solve(t_stack *a, t_stack *b, t_stack *com_list, int *k)
 {
 	while (!check_ordenation(a) || b->size > 0)
 	{
@@ -95,7 +137,11 @@ void	solve(t_stack *a, t_stack *b, t_stack *com_list)
 		else if (a->size < 4)
 			solve_for_three(a, com_list);
 		else if (a->size > 3 && a->size <= 100)
-			solve_hundred(a, b, com_list);
+		{
+			push_chunks_to_b(a, b, com_list, k);
+			push_chunks_to_a(a, b, com_list);
+			//solve_hundred(a, b, com_list);
+		}
 		// else if
 			// solve_hundred_plus(a, b, com_list);
 	}

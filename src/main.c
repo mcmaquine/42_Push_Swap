@@ -92,8 +92,8 @@ int	main(int argc, char **argv)
 	//print_stack(&a);
 	k = ft_calloc(a.size, sizeof(int));
 	copy_stack_to_k(&a, k);
-	quick_sort(k, 0, a.size - 1);
-	solve(&a, &b, &commands);
+	sort(k, a.size);
+	solve(&a, &b, &commands, k);
 	print_commands(&commands);
 	for (int i = 0; i < a.size; i++)
 		ft_printf("%d\n", k[i]);
