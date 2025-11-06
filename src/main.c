@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:23:27 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/05 15:39:18 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/06 13:41:55 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,10 @@ int	main(int argc, char **argv)
 	// free(k);
 	print_stack(&a);
 	//solve(&a, &b, &commands);
+	for (int i = 0; i < a.size; i++)
+	{
+		ft_printf("Min cost %d\n", find_least_moves(&a, &a, i));
+	}
 	print_commands(&commands);
 	free_stack(&a);
 }

@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:59:50 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/05 21:05:35 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/06 14:15:15 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,37 +104,43 @@ in stk
 */
 int	*find_min_max(t_stack *stk, int target)
 {
+	int	is_greater;
 	int	*number;
-	int	*max_in_stk;
+	int	*max_min;
 	int	i;
-	int	target_is_greater;
 
 	number = NULL;
-	i = 0;
-	max_in_stk = peek(stk, i);
-	target_is_greater = 1;
+	i = -1;
+	max_min = get_largest(stk);
+	is_greater = 0;
 	while (++i < stk->size)
 	{
 		number = peek(stk, i);
-		if (*number < target)
+		if (*number > target)
 		{	
-			target_is_greater = 0;
-			if (*max_in_stk < *number)
-				max_in_stk = number;
+			is_greater = 1;
+			if (*max_min > *number)
+				max_min = number;
 		}
 	}
-	if (target_is_greater)
+	if (!is_greater)
 		return (get_smallest(stk));
-	else
-		return (max_in_stk);
+	return (max_min);
 }
 
 /*
-Calculate minimun movements to reach top.
+Calculate minimum movements to reach top. Returns a struct which contains min
+cost and direction.
 */
-int	min_cost(t_stack *stk, int n)
+int	min_cost(t_stack *stk, int idx)
 {
-	
+	int	min_cost;
+
+	if (stk->size / 2 >= idx)
+		min_cost = idx;
+	else
+		min_cost = stk->size - idx;
+	return (min_cost);
 }
 
 /*
@@ -142,18 +148,31 @@ Calculate least cost moves to move target idx in b to a
 */
 int	find_least_moves(t_stack *a, t_stack *b, int idx)
 {
-	int	*tgt_b;
 	int	cost_b;
 	int	cost_a;
 	int	*tgt_a;
-	int	i;
 
-	tgt_b = peek(b, idx);
-	i = -1;
-	while (++i < b->size)
-	{
-		
-	}
+	tgt_a = find_min_max(a, *(int *)peek(b, idx));
+	cost_a = min_cost(a, get_index(a, *tgt_a));
+	cost_b = min_cost(b, idx);
+	return (cost_a + cost_b);
+}
+
+void	do_least_move_to_a(t_stack *a, t_stack *b, int idx_b, t_stack com_list)
+{
+	int	tgt_a;
+	int (*fa)(t_stack *);
+	int (*fb)(t_stack *);
+
+	tgt_a = *(int *)find_min_max(a, *(int *)peek(b, idx_b));
+	if ( a->size / 2 >= get_index(a, tgt_a) )
+		fa = ra;
+	else
+		fa = rra;
+	if ( a->size / 2 >= idx_b)
+		fb = rb;
+	else
+		fb = rrb;
 }
 
 void	turck(t_stack *a, t_stack *b, t_stack *com_list)
@@ -167,6 +186,7 @@ void	turck(t_stack *a, t_stack *b, t_stack *com_list)
 	while (a->size > 3)
 		lifo_add(com_list, pb(a, b));
 	solve_for_three(a, com_list);
+	tgt_b = 0;
 	while (b->size > 0)
 	{
 		i = 0;
@@ -177,9 +197,9 @@ void	turck(t_stack *a, t_stack *b, t_stack *com_list)
 			if (new_least < least_cost)
 			{
 				least_cost = new_least;
-				tgt_b = i;
+				//tgt_b = i;
 			}
 		}
-		do_least_move_to_a(a, b, tgt_b, com_list);
+		//do_least_move_to_a(a, b, tgt_b, com_list);
 	}
 }

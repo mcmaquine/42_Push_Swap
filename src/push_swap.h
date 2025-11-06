@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:24:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/05 14:38:01 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/06 13:41:06 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ typedef struct s_stack
 	t_list	*data;
 }	t_stack;
 
+typedef struct min_cost
+{
+	int cost;
+	int	command;
+}	t_cost;
+
 //Data parser
 int		fill_stack(t_stack *a, int argc, char **argv);
 int		check_min_max(char *num);
@@ -65,6 +71,9 @@ int		rrb(t_stack *b);
 void	lifo_add(t_stack *l, int n);
 //Solver functions
 void	solve(t_stack *a, t_stack *b, t_stack *com_list);
+int		*find_min_max(t_stack *stk, int target);
+int		min_cost(t_stack *stk, int idx);
+int		find_least_moves(t_stack *a, t_stack *b, int idx);
 //Utils
 int		*create_int(int n);
 int		check_ordenation(t_stack *a);
@@ -72,7 +81,4 @@ int		get_index(t_stack *stk, int n);
 int		*get_smallest(t_stack *stk);
 int		*get_largest(t_stack *stk);
 void	rotate_stack(t_stack *stk, int n, t_stack *comlst, int (*f)(t_stack *));
-//Sorting algorith for reference
-void	sort(int *list, int size);
-void	apply_rank(t_stack *stk, int *k);
 #endif
