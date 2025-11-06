@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:23:27 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/05 09:39:14 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/05 15:39:18 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,30 +71,42 @@ void	print_commands(t_stack *com_list)
 	}
 }
 
+static void	init(t_stack *a, t_stack *b, t_stack *com_list)
+{
+	a->size = 0;
+	a->data = NULL;
+	a->base = NULL;
+	a->head = NULL;
+	b->size = 0;
+	b->data = NULL;
+	b->base = NULL;
+	b->head = NULL;
+	com_list->size = 0;
+	com_list->data = NULL;
+	com_list->base = NULL;
+	com_list->head = NULL;
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack a;
 	t_stack b;
 	t_stack	commands;
-	int		*k;
+	// int		*k;
 
-	a.data = NULL;
-	b.data = NULL;
-	a.size = 0;
-	b.size = 0;
-	commands.data = NULL;
-	commands.size = 0;
+	init(&a, &b, &commands);
 	if (!fill_stack(&a, argc, argv))
 	{
 		free_stack(&a);
 		return 0;
 	}
-	//print_stack(&a);
-	k = ft_calloc(a.size, sizeof(int));
-	copy_stack_to_k(&a, k);
-	sort(k, a.size);
-	solve(&a, &b, &commands, k);
+	// k = ft_calloc(a.size, sizeof(int));
+	// copy_stack_to_k(&a, k);
+	// sort(k, a.size);
+	// apply_rank(&a, k);
+	// free(k);
+	print_stack(&a);
+	//solve(&a, &b, &commands);
 	print_commands(&commands);
 	free_stack(&a);
-	free(k);
 }

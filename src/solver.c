@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:59:50 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/05 10:35:09 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/05 21:05:35 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,55 +78,11 @@ void	solve_tens(t_stack *a, t_stack *b, t_stack *com_list)
 		lifo_add(com_list, pa(a, b));
 }
 
-void	push_chunks_to_b(t_stack *a, t_stack *b, t_stack *com_list, int *k)
-{
-	int	step;
-	int	key_nbr;
-	int	index;
-	int	*small;
-
-	if (a->size > 100)
-		step = a->size / 8;
-	else
-		step = a->size / 4;
-	index = 0;
-	while (a->size > 0)
-	{
-		index += step;
-		key_nbr = k[index - 1];
-		small = get_smallest(a);
-		while (small && (*small <= key_nbr))
-		{
-			if (get_index(a, *small) > a->size / 2)
-				rotate_stack(a, *small, com_list, rra);
-			else
-				rotate_stack(a, *small, com_list, ra);
-			lifo_add(com_list, pb(a, b));
-			small = get_smallest(a);
-		}
-	}
-}
-
-void	push_chunks_to_a(t_stack *a, t_stack *b, t_stack *com_list)
-{
-	int	*big;
-
-	while (b->size > 0)
-	{
-		big = get_largest(b);
-		if (get_index(b, *big) > b->size / 2)
-			rotate_stack(b, *big, com_list, rrb);
-		else
-			rotate_stack(b, *big, com_list, rb);
-		lifo_add(com_list, pa(a, b));
-	}
-}
-
 /*
 Start point for solving stack ordenation. This function checks stack size and
 choose correct option.
 */
-void	solve(t_stack *a, t_stack *b, t_stack *com_list, int *k)
+void	solve(t_stack *a, t_stack *b, t_stack *com_list)
 {
 	while (!check_ordenation(a) || b->size > 0)
 	{
@@ -138,10 +94,92 @@ void	solve(t_stack *a, t_stack *b, t_stack *com_list, int *k)
 			solve_for_three(a, com_list);
 		else if (a->size > 3 && a->size <= 10)
 			solve_tens(a, b, com_list);
-		else if (a->size > 10)
-		{
-			push_chunks_to_b(a, b, com_list, k);
-			push_chunks_to_a(a, b, com_list);
+	}
+}
+
+/*
+find the lesser value in stk that is greater than target. If all
+elements in stk is lesser than target, return a pointer to lesser value
+in stk
+*/
+int	*find_min_max(t_stack *stk, int target)
+{
+	int	*number;
+	int	*max_in_stk;
+	int	i;
+	int	target_is_greater;
+
+	number = NULL;
+	i = 0;
+	max_in_stk = peek(stk, i);
+	target_is_greater = 1;
+	while (++i < stk->size)
+	{
+		number = peek(stk, i);
+		if (*number < target)
+		{	
+			target_is_greater = 0;
+			if (*max_in_stk < *number)
+				max_in_stk = number;
 		}
+	}
+	if (target_is_greater)
+		return (get_smallest(stk));
+	else
+		return (max_in_stk);
+}
+
+/*
+Calculate minimun movements to reach top.
+*/
+int	min_cost(t_stack *stk, int n)
+{
+	
+}
+
+/*
+Calculate least cost moves to move target idx in b to a
+*/
+int	find_least_moves(t_stack *a, t_stack *b, int idx)
+{
+	int	*tgt_b;
+	int	cost_b;
+	int	cost_a;
+	int	*tgt_a;
+	int	i;
+
+	tgt_b = peek(b, idx);
+	i = -1;
+	while (++i < b->size)
+	{
+		
+	}
+}
+
+void	turck(t_stack *a, t_stack *b, t_stack *com_list)
+{
+	int	least_cost;
+	int	new_least;
+	int	tgt_b;
+	int	i;
+
+	least_cost = 0;
+	while (a->size > 3)
+		lifo_add(com_list, pb(a, b));
+	solve_for_three(a, com_list);
+	while (b->size > 0)
+	{
+		i = 0;
+		least_cost = find_least_moves(a, b, i);
+		while (++i < b->size)
+		{
+			new_least = find_least_moves(a, b, i);
+			if (new_least < least_cost)
+			{
+				least_cost = new_least;
+				tgt_b = i;
+			}
+		}
+		do_least_move_to_a(a, b, tgt_b, com_list);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 11:34:32 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/05 13:38:54 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/05 14:29:09 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,16 @@ void	sort(int *list, int size)
 	}
 }
 
-void	apply_rank
+void	apply_rank(t_stack *stk, int *k)
+{
+	int	i;
+	int	*num;
+
+	i = 0;
+	while (i < stk->size)
+	{
+		num = peek(stk, get_index(stk, k[i]));
+		*num = i;
+		i++;
+	}
+}

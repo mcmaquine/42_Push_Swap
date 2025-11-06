@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:24:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/05 13:42:35 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/05 14:38:01 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		rrb(t_stack *b);
 // Lifo functions
 void	lifo_add(t_stack *l, int n);
 //Solver functions
-void	solve(t_stack *a, t_stack *b, t_stack *com_list, int *k);
+void	solve(t_stack *a, t_stack *b, t_stack *com_list);
 //Utils
 int		*create_int(int n);
 int		check_ordenation(t_stack *a);
@@ -74,4 +74,5 @@ int		*get_largest(t_stack *stk);
 void	rotate_stack(t_stack *stk, int n, t_stack *comlst, int (*f)(t_stack *));
 //Sorting algorith for reference
 void	sort(int *list, int size);
+void	apply_rank(t_stack *stk, int *k);
 #endif
