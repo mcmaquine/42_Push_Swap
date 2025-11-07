@@ -1,4 +1,5 @@
 NAME = push_swap
+BONUS = checker
 
 CFLAGS = -Wall -Wextra -Werror -g
 
@@ -11,19 +12,25 @@ SRC =	src/main.c\
 		src/ops_push_swap_II.c\
 		src/push_swap_utils.c\
 		src/turck.c
+	
+BONUS_SRC = bonus/bonus.c
 
 OBJ = $(SRC:.c=.o)
+BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 LFLAGS = -L$(LIBFT_DIR) -lft
 
-.PHONY: all clean fclean re main
+.PHONY: all clean fclean re main bonus
 all  : $(NAME)
 
 $(NAME) : $(OBJ) $(LIBFT)
 	cc $^ -o $@ $(LFLAGS)
+
+bonus: $(BONUS_OBJ) $(LIBFT)
+	cc $^ -o $(BONUS) $(LFLAGS)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR) all

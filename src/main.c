@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:23:27 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/06 21:04:52 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/07 12:59:33 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,14 @@ int	main(int argc, char **argv)
 	t_stack	b;
 	t_stack	commands;
 
+	if (argc == 1)
+		return (0);
 	init(&a, &b, &commands);
 	if (!fill_stack(&a, argc, argv))
 	{
 		free_stack(&a);
 		ft_putstr_fd("Error", 2);
-		return (0);
+		return (1);
 	}
 	solve(&a, &b, &commands);
 	print_commands(&commands);
