@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:30:49 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/06 20:49:05 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/06 21:13:57 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ static void	delete(void	*data)
 		free(data);
 }
 
+/*
+Add element at the begining of a queue to be remeved like FIFO.
+*/
 void	push(t_stack *stack, int n)
 {
 	int	*num;
@@ -45,7 +48,7 @@ int	pop(t_stack *stack)
 	content = 0;
 	if (!stack)
 		return (0);
-	item = stack->head;
+	item = ft_lstlast(stack->data);
 	if (item)
 		content = *(int *)(item->content);
 	ft_lstdellast(&(stack->data), delete);
@@ -76,4 +79,20 @@ void	ft_lstdellast(t_list **lst, void (*del)(void *))
 		ft_lstdelone(*lst, del);
 		*lst = NULL;
 	}
+}
+
+/*
+Add a element to the end of a list, to be poped as a queue (LAST IN LAST OUT).
+*/
+void	lifo_add(t_stack *l, int n)
+{
+	int	*num;
+
+	num = create_int(n);
+	if (!l)
+		return ;
+	ft_lstadd_front(&(l->data), ft_lstnew(num));
+	l->head = ft_lstlast(l->data);
+	l->size = ft_lstsize(l->data);
+	l->base = l->data;
 }

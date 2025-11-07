@@ -6,11 +6,19 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 19:52:40 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/06 20:52:34 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/06 22:02:10 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/*
+Same has peek but returns a int instead of a pointer. A shorthand version.
+*/
+static int	pk(t_stack *stk, int pos)
+{
+	return (*(int *)peek(stk, pos));
+}
 
 /*
 find the lesser value in stk that is greater than target. If all
@@ -69,21 +77,20 @@ void	do_least_move_to_a(t_stack *a, t_stack *b, int tgt_b, t_stack *com_list)
 		fa = ra;
 	else
 		fa = rra;
-	if (b->size / 2 >= get_index(a, tgt_b))
+	if (b->size / 2 >= get_index(b, tgt_b))
 		fb = rb;
 	else
 		fb = rrb;
-	while ((*(int *)peek(a, 0) != tgt_a) || (*(int *)peek(b, 0) != tgt_b))
+	while (pk(a, 0) != tgt_a || pk(b, 0) != tgt_b)
 	{
-		if ((*(int *)peek(a, 0) != tgt_a) && (*(int *)peek(b, 0) != tgt_b)
-			&& fa == ra && fb == rb)
+		if (pk(a, 0) != tgt_a && pk(b, 0) != tgt_b && fa == ra && fb == rb)
 			lifo_add(com_list, rr(a, b));
-		else if ((*(int *)peek(a, 0) != tgt_a) && (*(int *)peek(b, 0) != tgt_b)
+		else if (pk(a, 0) != tgt_a && pk(b, 0) != tgt_b
 			&& fa == rra && fb == rrb)
 			lifo_add(com_list, rrr(a, b));
-		else if (*(int *)peek(a, 0) != tgt_a)
+		else if (pk(a, 0) != tgt_a)
 			lifo_add(com_list, fa(a));
-		else if (*(int *)peek(b, 0) != tgt_b)
+		else if (pk(b, 0) != tgt_b)
 			lifo_add(com_list, fb(b));
 	}
 }
@@ -112,7 +119,7 @@ void	turck(t_stack *a, t_stack *b, t_stack *com_list)
 				tgt_b = i;
 			}
 		}
-		do_least_move_to_a(a, b, get_index(b, tgt_b), com_list);
+		do_least_move_to_a(a, b, *(int *)peek(b, tgt_b), com_list);
 		lifo_add(com_list, pa(a, b));
 	}
 }
