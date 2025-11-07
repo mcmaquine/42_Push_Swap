@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 18:02:04 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/06 14:08:30 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/06 21:02:33 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	rr(t_stack *a, t_stack *b)
 	return (0);
 }
 
-int rra(t_stack *a)
+int	rra(t_stack *a)
 {
 	if (a->size > 1)
 	{
@@ -53,7 +53,7 @@ int rra(t_stack *a)
 	return (0);
 }
 
-int rrb(t_stack *b)
+int	rrb(t_stack *b)
 {
 	if (b->size > 1)
 	{

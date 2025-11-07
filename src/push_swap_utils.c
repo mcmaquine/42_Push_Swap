@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 13:39:58 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/05 14:39:28 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/06 20:47:31 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	*create_int(int n)
 */
 int	check_ordenation(t_stack *a)
 {
-	t_list *last;
+	t_list	*last;
 
 	last = ft_lstlast(a->data);
-	while(last->prev)
+	while (last->prev)
 	{
 		if (*(int *)last->content > *(int *)last->prev->content)
 			return (0);
@@ -71,7 +71,7 @@ int	*get_smallest(t_stack *stk)
 	if (!list)
 		return (NULL);
 	small = list->content;
-	while(list)
+	while (list)
 	{
 		if (*small > *(int *)list->content)
 			small = list->content;
@@ -87,7 +87,7 @@ int	*get_largest(t_stack *stk)
 
 	list = stk->head;
 	large = list->content;
-	while(list)
+	while (list)
 	{
 		if (*large < *(int *)list->content)
 			large = list->content;

@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 16:29:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/04 10:17:18 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/06 20:48:36 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	check_min_max(char *num)
 	if (n >= INT_MIN && n <= INT_MAX)
 		return (1);
 	else
-		return (0);	
+		return (0);
 }
 
 /*
@@ -96,7 +96,7 @@ int	fill_stack(t_stack *a, int argc, char **argv)
 		i = -1;
 		split = ft_split(argv[param], ' ');
 		while (split[++i])
-			if(!validate_input(a, split[i]))
+			if (!validate_input(a, split[i]))
 				ok = 0;
 		ft_free_split(split);
 		split = NULL;

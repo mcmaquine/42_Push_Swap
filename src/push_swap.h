@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:24:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/06 13:41:06 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/06 20:46:33 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_stack
 
 typedef struct min_cost
 {
-	int cost;
+	int	cost;
 	int	command;
 }	t_cost;
 
@@ -67,13 +67,14 @@ int		rb(t_stack *b);
 int		rr(t_stack *a, t_stack *b);
 int		rra(t_stack *a);
 int		rrb(t_stack *b);
+int		rrr(t_stack *a, t_stack *b);
 // Lifo functions
 void	lifo_add(t_stack *l, int n);
 //Solver functions
 void	solve(t_stack *a, t_stack *b, t_stack *com_list);
-int		*find_min_max(t_stack *stk, int target);
+void	solve_for_three(t_stack *a, t_stack *com_list);
+void	turck(t_stack *a, t_stack *b, t_stack *com_list);
 int		min_cost(t_stack *stk, int idx);
-int		find_least_moves(t_stack *a, t_stack *b, int idx);
 //Utils
 int		*create_int(int n);
 int		check_ordenation(t_stack *a);
