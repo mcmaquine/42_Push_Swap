@@ -56,14 +56,22 @@ Calculate least cost moves to move target idx in b to a
 */
 int	find_least_moves(t_stack *a, t_stack *b, int idx)
 {
-	int	cost_b;
-	int	cost_a;
+	t_cost ca;
+	t_cost cb;
 	int	*tgt_a;
 
 	tgt_a = find_min_max(a, *(int *)peek(b, idx));
-	cost_a = min_cost(a, get_index(a, *tgt_a));
-	cost_b = min_cost(b, idx);
-	return (cost_a + cost_b);
+	ca = min_cost(a, get_index(a, *tgt_a));
+	cb = min_cost(b, idx);
+	if (ca.f == cb.f)
+	{
+		if (ca.cost > cb.cost)
+			return (ca.cost);
+		else
+			return (cb.cost);
+	}
+	else
+		return (ca.cost + cb.cost);
 }
 
 void	do_least_move_to_a(t_stack *a, t_stack *b, int tgt_b, t_stack *com_list)

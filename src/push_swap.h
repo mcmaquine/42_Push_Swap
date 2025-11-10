@@ -42,7 +42,7 @@ typedef struct s_stack
 typedef struct min_cost
 {
 	int	cost;
-	int	command;
+	int	(*f)(t_stack *);
 }	t_cost;
 
 //Data parser
@@ -74,7 +74,7 @@ void	lifo_add(t_stack *l, int n);
 void	solve(t_stack *a, t_stack *b, t_stack *com_list);
 void	solve_for_three(t_stack *a, t_stack *com_list);
 void	turck(t_stack *a, t_stack *b, t_stack *com_list);
-int		min_cost(t_stack *stk, int idx);
+t_cost	min_cost(t_stack *stk, int id);
 //Utils
 int		*create_int(int n);
 int		check_ordenation(t_stack *a);

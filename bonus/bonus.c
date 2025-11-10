@@ -18,7 +18,7 @@ static void	init(t_stack *a, t_stack *b, t_stack *com_list)
 	a->data = NULL;
 	a->base = NULL;
 	a->head = NULL;
-	b->size = 0;s
+	b->size = 0;
 	b->data = NULL;
 	b->base = NULL;
 	b->head = NULL;

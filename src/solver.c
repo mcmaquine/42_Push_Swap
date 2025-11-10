@@ -64,14 +64,20 @@ void	rotate_stack(t_stack *stk, int n, t_stack *comlst, int (*f)(t_stack *))
 Calculate minimum movements to reach top. Returns a struct which contains min
 cost and direction.
 */
-int	min_cost(t_stack *stk, int idx)
+t_cost	min_cost(t_stack *stk, int idx)
 {
-	int	min_cost;
+	t_cost	min_cost;
 
 	if (stk->size / 2 >= idx)
-		min_cost = idx;
+	{
+		min_cost.cost = idx;
+		min_cost.f = ra;
+	}
 	else
-		min_cost = stk->size - idx;
+	{
+		min_cost.cost = stk->size - idx;
+		min_cost.f = rra;
+	}
 	return (min_cost);
 }
 
