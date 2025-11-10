@@ -13,7 +13,12 @@ SRC =	src/main.c\
 		src/push_swap_utils.c\
 		src/turck.c
 	
-BONUS_SRC = bonus/bonus.c
+BONUS_SRC = bonus/bonus.c\
+			bonus/parser_bonus.c\
+			bonus/parser_com_list_bonus.c\
+			bonus/stack_functions_bonus_I.c\
+			bonus/stack_functions_bonus_II.c\
+			bonus/utils_bonus.c
 
 OBJ = $(SRC:.c=.o)
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
@@ -27,10 +32,10 @@ LFLAGS = -L$(LIBFT_DIR) -lft
 all  : $(NAME)
 
 $(NAME) : $(OBJ) $(LIBFT)
-	cc $^ -o $@ $(LFLAGS)
+	$(CC) $^ -o $@ $(LFLAGS)
 
 bonus: $(BONUS_OBJ) $(LIBFT)
-	cc $^ -o $(BONUS) $(LFLAGS)
+	$(CC) $^ -o $(BONUS) $(LFLAGS)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR) all

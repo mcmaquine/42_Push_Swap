@@ -28,3 +28,8 @@ int	check_ordenation(t_stack *a)
 	}
 	return (1);
 }
+
+void	exec(t_stack *a, t_stack com_list)
+{
+	t_stack	*b;
+}

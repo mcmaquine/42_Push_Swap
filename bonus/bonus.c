@@ -18,18 +18,16 @@ int	main(int argc, char **argv)
 	t_stack	*comm_list;
 
 	if (argc == 1)
-		return (0);
-	command = get_next_line(0);
-	while (*command != 4)
+		return (EXIT_FAILURE);
+	if (!fill_stack(&a, argc, argv))
 	{
-		if (is_valide_command(command))
-		{
-			lifo_add(comm_list, command);
-		}
-		else
-		{
-			free(command);
-			free_list(comm_list);
-		}
+		free_stack(&a);
+		ft_putstr_fd("Error", 2);
+		return (EXIT_FAILURE);
+	}
+	if (!read_from_stdin(comm_list))
+	{
+		ft_putstr_fd("Error", 2);
+		return (EXIT_SUCCESS);
 	}
 }
