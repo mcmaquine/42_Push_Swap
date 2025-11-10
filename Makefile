@@ -14,10 +14,12 @@ SRC =	src/main.c\
 		src/turck.c
 	
 BONUS_SRC = bonus/bonus.c\
+			bonus/stack_functions_I_bonus.c\
+			bonus/stack_functions_II_bonus.c\
+			bonus/ops_push_swap_bonus.c\
+			bonus/ops_push_swap_II_bonus.c\
 			bonus/parser_bonus.c\
 			bonus/parser_com_list_bonus.c\
-			bonus/stack_functions_bonus_I.c\
-			bonus/stack_functions_bonus_II.c\
 			bonus/utils_bonus.c
 
 OBJ = $(SRC:.c=.o)
@@ -42,6 +44,7 @@ $(LIBFT):
 
 clean :
 	rm -f $(OBJ)
+	rm -f $(BONUS_OBJ)
 
 fclean : clean
 	rm -f $(NAME)

@@ -1,30 +1,36 @@
 #include "push_swap_bonus.h"
 
+void	free_stack(t_stack *stk)
+{
+	while (stk->size)
+		pop(stk);
+}
+
 int is_valid_command(char *com)
 {
-	if (ft_strlen(com) > 3)
+	if (ft_strlen(com) > 4)
 		return (0);
-	if (ft_strcmp(com, "sa\n"))
+	if (!ft_strcmp(com, "sa\n"))
 		return (SA);
-	else if (ft_strcmp(com, "sb\n"))
+	else if (!ft_strcmp(com, "sb\n"))
 		return (SB);
-	else if (ft_strcmp(com, "ss\n"))
+	else if (!ft_strcmp(com, "ss\n"))
 		return (SS);
-	else if (ft_strcmp(com, "pa\n"))
+	else if (!ft_strcmp(com, "pa\n"))
 		return (PA);
-	else if (ft_strcmp(com, "pb\n"))
+	else if (!ft_strcmp(com, "pb\n"))
 		return (PB);
-	else if (ft_strcmp(com, "ra\n"))
+	else if (!ft_strcmp(com, "ra\n"))
 		return (RA);
-	else if (ft_strcmp(com, "rb\n"))
+	else if (!ft_strcmp(com, "rb\n"))
 		return (RB);
-	else if (ft_strcmp(com, "rr\n"))
+	else if (!ft_strcmp(com, "rr\n"))
 		return (RR);
-	else if (ft_strcmp(com, "rra\n"))
+	else if (!ft_strcmp(com, "rra\n"))
 		return (RRA);
-	else if (ft_strcmp(com, "rrb\n"))
+	else if (!ft_strcmp(com, "rrb\n"))
 		return (RRB);
-	else if (ft_strcmp(com, "rrr\n"))
+	else if (!ft_strcmp(com, "rrr\n"))
 		return (RRR);
 	return (0);
 }
@@ -35,15 +41,15 @@ int	read_from_stdin(t_stack *com_list)
 	int		comm;
 
 	command = get_next_line(0);
-	while (*command != 4 || *command != NULL)
+	while (command)
 	{
 		comm = is_valid_command(command);
 		free(command);
 		if (comm)
-			lifo_add(comm_list, command);
+			lifo_add(com_list, comm);
 		else
 		{
-			free_list(comm_list);
+			free_stack(com_list);
 			return (0);
 		}
 		command = get_next_line(0);
