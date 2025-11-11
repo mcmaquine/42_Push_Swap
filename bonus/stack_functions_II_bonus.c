@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_functions_II.c                               :+:      :+:    :+:   */
+/*   stack_functions_II_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 14:13:58 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/06 21:04:23 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/10 13:41:39 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 /*
 Move all data to top direction, one by one, de top value goes to the base
@@ -42,6 +42,7 @@ void	stack_roll_up(t_stack *stk)
 }
 
 void	stack_roll_down(t_stack *stk)
+
 {
 	void	*last_content;
 	t_list	*last;

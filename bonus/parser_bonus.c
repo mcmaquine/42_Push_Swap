@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 /*
 	Verify if a number already exists in stack stk. Return 1 it is exists, 0

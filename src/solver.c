@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:59:50 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/05 10:35:09 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/11 09:38:25 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	solve_for_three(t_stack *a, t_stack *com_list)
 {
 	int	*n1;
 	int	*n2;
-	int *n3;
+	int	*n3;
 
-	while(!check_ordenation(a))
+	while (!check_ordenation(a))
 	{
 		n1 = peek(a, 0);
 		n2 = peek(a, 1);
@@ -56,78 +56,39 @@ void	solve_small(t_stack *a, t_stack *com_list)
 
 void	rotate_stack(t_stack *stk, int n, t_stack *comlst, int (*f)(t_stack *))
 {
-	while (*(int*)peek(stk, 0) != n)
+	while (*(int *)peek(stk, 0) != n)
 		lifo_add(comlst, f(stk));
 }
 
-void	solve_tens(t_stack *a, t_stack *b, t_stack *com_list)
+/*
+Calculate minimum movements to reach top. Returns a struct which contains min
+cost and direction.
+*/
+t_cost	min_cost(t_stack *stk, int idx)
 {
-	int	*small;
+	t_cost	min_cost;
 
-	while (a->size > 3)
+	if (stk->size / 2 >= idx)
 	{
-		small = get_smallest(a);
-		if (get_index(a, *small) > a->size / 2)
-			rotate_stack(a, *small, com_list, rra);
-		else
-			rotate_stack(a, *small, com_list, ra);
-		lifo_add(com_list, pb(a, b));
+		min_cost.cost = idx;
+		min_cost.f = ra;
 	}
-	solve_for_three(a, com_list);
-	while (b->size > 0)
-		lifo_add(com_list, pa(a, b));
-}
-
-void	push_chunks_to_b(t_stack *a, t_stack *b, t_stack *com_list, int *k)
-{
-	int	step;
-	int	key_nbr;
-	int	index;
-	int	*small;
-
-	if (a->size > 100)
-		step = a->size / 8;
 	else
-		step = a->size / 4;
-	index = 0;
-	while (a->size > 0)
 	{
-		index += step;
-		key_nbr = k[index - 1];
-		small = get_smallest(a);
-		while (small && (*small <= key_nbr))
-		{
-			if (get_index(a, *small) > a->size / 2)
-				rotate_stack(a, *small, com_list, rra);
-			else
-				rotate_stack(a, *small, com_list, ra);
-			lifo_add(com_list, pb(a, b));
-			small = get_smallest(a);
-		}
+		min_cost.cost = stk->size - idx;
+		min_cost.f = rra;
 	}
-}
-
-void	push_chunks_to_a(t_stack *a, t_stack *b, t_stack *com_list)
-{
-	int	*big;
-
-	while (b->size > 0)
-	{
-		big = get_largest(b);
-		if (get_index(b, *big) > b->size / 2)
-			rotate_stack(b, *big, com_list, rrb);
-		else
-			rotate_stack(b, *big, com_list, rb);
-		lifo_add(com_list, pa(a, b));
-	}
+	return (min_cost);
 }
 
 /*
 Start point for solving stack ordenation. This function checks stack size and
 choose correct option.
 */
-void	solve(t_stack *a, t_stack *b, t_stack *com_list, int *k)
+void	solve(t_stack *a, t_stack *b, t_stack *com_list)
 {
+	int	*small;
+
 	while (!check_ordenation(a) || b->size > 0)
 	{
 		if (a->size < 2)
@@ -136,12 +97,14 @@ void	solve(t_stack *a, t_stack *b, t_stack *com_list, int *k)
 			solve_small(a, com_list);
 		else if (a->size < 4)
 			solve_for_three(a, com_list);
-		else if (a->size > 3 && a->size <= 10)
-			solve_tens(a, b, com_list);
-		else if (a->size > 10)
+		else if (a->size > 3)
 		{
-			push_chunks_to_b(a, b, com_list, k);
-			push_chunks_to_a(a, b, com_list);
+			turck(a, b, com_list);
+			small = get_smallest(a);
+			if (get_index(a, *small) > a->size / 2)
+				rotate_stack(a, *small, com_list, rra);
+			else
+				rotate_stack(a, *small, com_list, ra);
 		}
 	}
 }
