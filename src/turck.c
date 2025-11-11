@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 19:52:40 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/06 22:02:10 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/11 09:41:31 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ Calculate least cost moves to move target idx in b to a
 */
 int	find_least_moves(t_stack *a, t_stack *b, int idx)
 {
-	t_cost ca;
-	t_cost cb;
-	int	*tgt_a;
+	t_cost	ca;
+	t_cost	cb;
+	int		*tgt_a;
 
 	tgt_a = find_min_max(a, *(int *)peek(b, idx));
 	ca = min_cost(a, get_index(a, *tgt_a));

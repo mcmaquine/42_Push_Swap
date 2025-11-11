@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_com_list_bonus.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/11 09:38:29 by mmaquine          #+#    #+#             */
+/*   Updated: 2025/11/11 09:39:30 by mmaquine         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap_bonus.h"
 
 void	free_stack(t_stack *stk)
@@ -6,7 +18,7 @@ void	free_stack(t_stack *stk)
 		pop(stk);
 }
 
-int is_valid_command(char *com)
+int	is_valid_command(char *com)
 {
 	if (ft_strlen(com) > 4)
 		return (0);
