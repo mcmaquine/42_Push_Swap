@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 13:32:58 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/11 09:39:47 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/12 14:02:58 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("Error\n", 2);
 		return (EXIT_FAILURE);
 	}
+	if (a.size == 0)
+		return (EXIT_SUCCESS);
 	if (!read_from_stdin(&comm_list))
 	{
 		ft_putstr_fd("Error\n", 2);

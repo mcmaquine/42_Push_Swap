@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 10:59:50 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/11 09:38:25 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/12 13:58:10 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ void	solve(t_stack *a, t_stack *b, t_stack *com_list)
 {
 	int	*small;
 
-	while (!check_ordenation(a) || b->size > 0)
+	while ((a->size > 0 && b->size > 0)
+		&& (!check_ordenation(a) || b->size > 0))
 	{
 		if (a->size < 2)
 			return ;
