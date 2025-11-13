@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:30:49 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/06 21:13:57 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/13 10:55:10 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ void	push(t_stack *stack, int n)
 		return ;
 	ft_lstadd_back(&(stack->data), ft_lstnew(num));
 	stack->head = ft_lstlast(stack->data);
-	stack->size = ft_lstsize(stack->data);
-	stack->base = stack->data;
-	if (stack->size == 1)
-		stack->base = ft_lstlast(stack->data);
+	stack->size = stack->size + 1;
 }
 
 int	pop(t_stack *stack)
@@ -92,7 +89,5 @@ void	lifo_add(t_stack *l, int n)
 	if (!l)
 		return ;
 	ft_lstadd_front(&(l->data), ft_lstnew(num));
-	l->head = ft_lstlast(l->data);
 	l->size = ft_lstsize(l->data);
-	l->base = l->data;
 }

@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:23:27 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/10 13:56:25 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/13 11:10:07 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,12 @@ static void	init(t_stack *a, t_stack *b, t_stack *com_list)
 {
 	a->size = 0;
 	a->data = NULL;
-	a->base = NULL;
 	a->head = NULL;
 	b->size = 0;
 	b->data = NULL;
-	b->base = NULL;
 	b->head = NULL;
 	com_list->size = 0;
 	com_list->data = NULL;
-	com_list->base = NULL;
 	com_list->head = NULL;
 }
 

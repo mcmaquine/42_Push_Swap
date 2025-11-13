@@ -6,7 +6,7 @@
 /*   By: mmaquine <mmaquine@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/24 15:24:03 by mmaquine          #+#    #+#             */
-/*   Updated: 2025/11/06 20:46:33 by mmaquine         ###   ########.fr       */
+/*   Updated: 2025/11/13 10:21:18 by mmaquine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@
 typedef struct s_stack
 {
 	void	*head;
-	void	*base;
 	int		size;
 	t_list	*data;
 }	t_stack;
